@@ -1,13 +1,13 @@
 # Redis使用情况
 
- users\_$\{app\_id\}\_$\{uid\}
+### users\_\#\{app\_id\}\_\#\{uid\}
 
 类型：hash
 
 描述：用户的一些状态信息
 
 - sync\_key：用户最近消息ID（lastMsgId）
-- group\_sync\_key\_$\{gid\}：用户最近的群聊消息ID
+- group\_sync\_key\_\#\{gid\}：用户最近的群聊消息ID
 - forbidden：用户是否禁言
 - unread：未读消息数量
 
