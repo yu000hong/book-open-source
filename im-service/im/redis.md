@@ -1,17 +1,17 @@
 # Redis使用情况
 
-### users\_$\{app\_id\}\_$\{uid\}
+### users\_\$\{app\_id\}\_\$\{uid\}
 
 类型：hash
 
 描述：用户的一些状态信息
 
 - sync\_key：用户最近消息ID（lastMsgId）
-- group\_sync\_key\_$\{gid\}：用户最近的群聊消息ID
+- group\_sync\_key\_\$\{gid\}：用户最近的群聊消息ID
 - forbidden：用户是否禁言
 - unread：未读消息数量
 
-### access\_token\_$\{token\}
+### access\_token\_\$\{token\}
 
 类型：hash
 
@@ -22,7 +22,7 @@
 - notification\_on：是否开启通知
 - forbidden：是否禁言
 
-### statistics\_users\_$\{app\_id\}
+### statistics\_users\_\$\{app\_id\}
 
 类型：hyperloglog
 
@@ -30,7 +30,7 @@
 
 描述：统计某个APP大概有多少上线过的用户
 
-### statistics\_dau\_$\{date\}\_$\{app\_id\}
+### statistics\_dau\_\$\{date\}\_\$\{app\_id\}
 
 类型：hyperloglog
 
@@ -38,7 +38,7 @@
 
 描述：统计某个APP在某天的活跃用户数
 
-### devices\_${device\_id}\_${platform\_id}
+### devices\_\$\{device\_id\}\_\$\{platform\_id\}
 
 类型：string
 
