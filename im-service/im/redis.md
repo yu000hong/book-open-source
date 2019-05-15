@@ -11,7 +11,7 @@
 - forbidden：用户是否禁言
 - unread：未读消息数量
 
- access\_token\_$\{token\}
+ access\_token\_\#\{token\}
 
 类型：hash
 
@@ -22,7 +22,7 @@
 - notification\_on：是否开启通知
 - forbidden：是否禁言
 
-### statistics\_users\_$\{app\_id\}
+### statistics\_users\_\#\{app\_id\}
 
 类型：hyperloglog
 
@@ -30,7 +30,7 @@
 
 描述：统计某个APP大概有多少上线过的用户
 
-### statistics\_dau\_$\{date\}\_$\{app\_id\}
+### statistics\_dau\_\#\{date\}\_\#\{app\_id\}
 
 类型：hyperloglog
 
@@ -38,7 +38,7 @@
 
 描述：统计某个APP在某天的活跃用户数
 
-### devices\_$\{device\_id\}\_$\{platform\_id\}
+### devices\_\#\{device\_id\}\_\#\{platform\_id\}
 
 类型：string
 
@@ -48,7 +48,7 @@
 
 类型：string
 
-描述：这是一个计数器，用于生成唯一的设备ID（整型），当通过`devices_${device_id}_${platform_id}`无法获取到对应的设备ID时，就会从这个计数器中生成一个ID
+描述：这是一个计数器，用于生成唯一的设备ID（整型），当通过`devices_#{device_id}_#{platform_id}`无法获取到对应的设备ID时，就会从这个计数器中生成一个ID
 
 ### groups\_actions
 
