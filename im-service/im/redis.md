@@ -1,6 +1,6 @@
 # Redis使用情况
 
-### users\_\${app\_id}\_\${uid}
+### users\_${app\_id}\_${uid}
 
 类型：hash
 
@@ -22,7 +22,7 @@
 - notification\_on：是否开启通知
 - forbidden：是否禁言
 
-### statistics\_users\_\${app_id}
+### statistics\_users\_${app\_id}
 
 类型：hyperloglog
 
@@ -30,7 +30,7 @@
 
 描述：统计某个APP大概有多少上线过的用户
 
-### statistics\_dau\_\${date}\_\${app\_id}
+### statistics\_dau\_${date}\_${app\_id}
 
 类型：hyperloglog
 
@@ -38,7 +38,7 @@
 
 描述：统计某个APP在某天的活跃用户数
 
-### devices\_\${device\_id}\_\${platform\_id}
+### devices\_${device\_id}\_${platform\_id}
 
 类型：string
 
