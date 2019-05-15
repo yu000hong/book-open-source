@@ -11,7 +11,7 @@
 - forbidden：用户是否禁言
 - unread：未读消息数量
 
-### access\_token\_\${token}
+### access\_token\_${token}
 
 类型：hash
 
