@@ -5,11 +5,21 @@
   * [ims](im-service/ims/ims.md)
     * [配置文件](im-service/ims/configuration.md)
     * [索引文件](im-service/ims/index.md)
+    * [消息文件](im-service/ims/storage_file.md)
     * [启动过程](im-service/ims/boot.md)
     * [存储服务RPC](im-service/ims/rpc.md)
     * [主从数据同步](im-service/ims/master-slaver-sync.md)
+    * [消息类型](im-service/ims/message_type.md)
+    * [私聊消息](im-service/ims/peer_storage.md)
+    * [群组消息](im-service/ims/group_storage.md)
+    * [一些问题](im-service/ims/question.md)
   * [imr](im-service/imr/imr.md)
   * [im](im-service/im/im.md)
+    * [配置文件](im-service/im/configuration.md)
+    * [Redis使用情况](im-service/im/redis.md)
+    * [MySQL使用情况](im-service/im/mysql.md)
+    * [群组管理](im-service/im/group_manager.md)
+    * [一些问题](im-service/im/question.md)
 * [MySQL]
 * [BoltDB]
 

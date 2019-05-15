@@ -29,3 +29,7 @@ https://github.com/boltdb/bolt
 
 [区块的持久化之BoltDB(五、完结篇)](https://www.jianshu.com/p/4a9634055fc2)
 
+[boltdbweb: A simple web based boltdb GUI Admin panel.](https://github.com/evnix/boltdbweb)
+
+[influxdb & boltdb 简介](https://www.cnblogs.com/bonelee/p/6236234.html)
+
