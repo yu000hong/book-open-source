@@ -1,6 +1,6 @@
 # Redis使用情况
 
-### users\_\$\{app\_id\}\_\$\{uid\}
+### users\_$\{app\_id\}\_$\{uid\}
 
 类型：hash
 
