@@ -54,18 +54,24 @@
 
 类型：string
 
-描述：TODO
+描述：获取群组管理器对应的**action\_id**，其值为："%d:%d"，第一个整数应该是上一个action\_id，第二个整数为当前action\_id。
 
-### 订阅频道
+### ACTION频道
 
-订阅频道包括：
+ACTION频道包括：
 
-- group_create
-- group_disband
-- group_member_add
-- group_member_remove
-- group_upgrade
-- group_member_mute
-- group_manager.ping
+- group\_create
+- group\_disband
+- group\_member\_add
+- group\_member\_remove
+- group\_upgrade
+- group\_member\_mute
 
-其中，`group_manager.ping`是在IM服务器启动是，随机生成的一个字符串。
+频道的内容为：prev\_id:action\_id:content
+
+### RELOAD频道
+
+RELOAD频道为：`group_manager.ping`，group\_manager.ping是在IM服务器启动时随机生成的一个字符串。
+
+当IM服务器收到RELOAD频道的订阅消息时，会根据action\_id和dirty去判断是否需要重新加载群组及其群成员信息。
+
