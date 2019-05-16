@@ -19,6 +19,8 @@
     * [Redis使用情况](im-service/im/redis.md)
     * [MySQL使用情况](im-service/im/mysql.md)
     * [群组管理](im-service/im/group_manager.md)
+    * [消息路由](im-service/im/route.md)
+    * [客户端连接](im-service/im/client.md)
     * [一些问题](im-service/im/question.md)
 * [MySQL]
 * [BoltDB]

@@ -67,11 +67,16 @@ ACTION频道包括：
 - group\_upgrade
 - group\_member\_mute
 
-频道的内容为：prev\_id:action\_id:content
+频道内容为：prev\_id:action\_id:content
 
 ### RELOAD频道
 
-RELOAD频道为：`group_manager.ping`，group\_manager.ping是在IM服务器启动时随机生成的一个字符串。
+RELOAD频道为：**group_manager.ping**，group\_manager.ping是在IM服务器启动时随机生成的一个字符串。
 
 当IM服务器收到RELOAD频道的订阅消息时，会根据action\_id和dirty去判断是否需要重新加载群组及其群成员信息。
 
+### 禁言频道
+
+禁言频道为：**speak_forbidden**
+
+频道内容为：**appid,uid,forbidden**
