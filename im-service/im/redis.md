@@ -11,7 +11,7 @@
 - forbidden：用户是否禁言
 - unread：未读消息数量
 
- access\_token\_\#\{token\}
+### access\_token\_\#\{token\}
 
 类型：hash
 
@@ -55,3 +55,17 @@
 类型：string
 
 描述：TODO
+
+### 订阅频道
+
+订阅频道包括：
+
+- group_create
+- group_disband
+- group_member_add
+- group_member_remove
+- group_upgrade
+- group_member_mute
+- group_manager.ping
+
+其中，`group_manager.ping`是在IM服务器启动是，随机生成的一个字符串。
