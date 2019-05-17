@@ -80,3 +80,16 @@ RELOAD频道为：**group_manager.ping**，group\_manager.ping是在IM服务器�
 禁言频道为：**speak_forbidden**
 
 频道内容为：**appid,uid,forbidden**
+
+### 推送队列
+
+类型：LIST
+
+推送队列包括：
+
+- system_push_queue
+- customer_push_queue
+- group_push_queue
+- group_push_queue_\#\{appid\}
+- push_queue
+- push_queue_\#\{appid\}

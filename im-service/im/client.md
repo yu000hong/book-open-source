@@ -48,9 +48,9 @@ type Connection struct {
 - online：表示用户不再接受推送通知(apns, gcm)（online=!(notification_on&&!is_mobile)）
 - sync_count：TODO
 - tc：底层连接超时或失败的次数，只要出现一次超时或失败，不会再向该连接写入数据
-- wt：
-- lwt：
-- pwt：
+- wt：消息发送通道
+- pwt：消息列表发送通道
+- lwt：异步发送消息通知通道
 - version：客户端协议版本号
 - tm：
 - appid：应用ID
@@ -68,6 +68,7 @@ type Connection struct {
 - EnqueueMessage：将消息发送到wt通道
 - EnqueueMessages：将消息列表发送到pwt通道
 - EnqueueNonBlockMessage：将消息放入messages队列，如果队列长度超过1000，那么移除对头消息并插入该消息，同时通过lwt通道通知写入异步消息
-- SendMessage：
+- SendMessage：发送消息到除了自己以外的所有客户端
+- SendGroupMessage：发送超级群消息
 
 
