@@ -85,7 +85,7 @@ Channel表示当前IM服务器与IMR路由服务器的连接，每个Channel里�
 - addr：IMR路由服务器的地址
 - wt：IM把要发送到IMR的消息写入wt通道，另外有一个协程会处理发送到IMR服务器的任务
 - subscribers：通过subscribers映射就能查找某个用户是否上线，该用户有多少个客户端正在连接IM服务器
-- dispatch：分发私聊消息方法
+- dispatch：分发单聊消息方法
 - dispatch_group：分发群组消息方法
 - dispatch_room：分发聊天室消息方法
 
@@ -100,7 +100,7 @@ func (channel *Channel) Publish(amsg *AppMessage) {
 }
 ```
 
-向IMR发送一个MSG_PUBLISH类型消息，通过IMR路由发送AppMessage私聊消息。
+向IMR发送一个MSG_PUBLISH类型消息，通过IMR路由发送AppMessage单聊消息。
 
 **PublishGroup**
 

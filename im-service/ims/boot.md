@@ -126,7 +126,7 @@ func FlushIndexLoop() {
 
 支持两个接口：
 
-- `/summary`：包括GO协程数量、请求总数、私聊消息总数、群组消息总数
+- `/summary`：包括GO协程数量、请求总数、单聊消息总数、群组消息总数
 - `/stack`：打印当前堆栈信息
 
 #### 7. 监听SyncClient

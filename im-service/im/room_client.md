@@ -1,4 +1,4 @@
-# 聊天室
+# 聊天室消息
 
 处理聊天室相应功能的是`RoomClient`，它继承自`Connection`。
 
@@ -39,7 +39,7 @@ func (client *Client) HandleMessage(msg *Message) {
 
 具体的不同类型Client是否需要处理某种类型的消息，由其自己决定。
 
-**RoomClient**只处理三种消息类型：
+**RoomClient**只处理三种类型的消息：
 
 * MSG_ENTER_ROOM：进入聊天室
 * MSG_LEAVE_ROOM：离开聊天室

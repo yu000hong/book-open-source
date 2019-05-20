@@ -19,7 +19,7 @@ type Connection struct {
 	notification_on bool //桌面在线时是否通知手机端
 	online bool //是否在线
 
-	sync_count int64 //私聊消息同步计数，用于判断是否是首次同步
+	sync_count int64 //单聊消息同步计数，用于判断是否是首次同步
 	tc     int32 //write channel timeout/error count
 	wt     chan *Message
 	lwt    chan int
@@ -71,4 +71,86 @@ type Connection struct {
 - SendMessage：发送消息到除了自己以外的所有客户端
 - SendGroupMessage：发送超级群消息
 
+
+### Client
+
+```go
+type Client struct {
+	Connection//必须放在结构体首部
+	*PeerClient
+	*GroupClient
+	*RoomClient
+	*CustomerClient
+	public_ip int32
+}
+```
+
+主要消息处理方法：HandleMessage
+
+```go
+func (client *Client) HandleMessage(msg *Message) {
+	switch msg.cmd {
+	case MSG_AUTH_TOKEN:
+		client.HandleAuthToken(msg.body.(*AuthenticationToken), msg.version)
+	case MSG_ACK:
+		client.HandleACK(msg.body.(*MessageACK))
+	case MSG_PING:
+		client.HandlePing()
+	}
+    //每种类型Client都会触发消息处理逻辑，是否对消息进行处理由对应的Client决定
+	client.PeerClient.HandleMessage(msg)
+	client.GroupClient.HandleMessage(msg)
+	client.RoomClient.HandleMessage(msg)
+	client.CustomerClient.HandleMessage(msg)
+}
+```
+
+#### HandlePing
+
+终端发送一个**MSG_PING**到IM终端服务器，IM再回复一个**MSG_PONG**类型消息给终端，没有其他任何逻辑。
+
+#### HandleACK
+
+终端发送一个**MSG_ACK**到IM终端服务器，IM只是简单的记录了一下日志，do nothing。
+
+#### HandleAuthToken
+
+TODO 终端认证登录，IM服务器在校验了终端的合法性后，为终端Client设置用户相关的属性，并加入到终端集合里。
+
+
+
+### Client重要方法
+
+#### SendMessages
+
+TODO 发送等待队列中的消息
+
+```go
+func (client *Client) SendMessages(seq int) int {
+	var messages *list.List
+	client.mutex.Lock()
+	if (client.messages.Len() == 0) {
+		client.mutex.Unlock()		
+		return seq
+	}
+	messages = client.messages
+	client.messages = list.New()
+	client.mutex.Unlock()
+
+	e := messages.Front();	
+	for e != nil {
+		msg := e.Value.(*Message)
+		if msg.cmd == MSG_RT || msg.cmd == MSG_IM || msg.cmd == MSG_GROUP_IM {
+			atomic.AddInt64(&server_summary.out_message_count, 1)
+		}
+		seq++
+		//以当前客户端所用版本号发送消息
+		vmsg := &Message{msg.cmd, seq, client.version, msg.flag, msg.body}
+		client.send(vmsg)
+		
+		e = e.Next()
+	}
+	return seq
+}
+```
 

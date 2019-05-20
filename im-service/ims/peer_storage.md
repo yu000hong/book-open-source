@@ -1,6 +1,6 @@
-# 私聊消息
+# 单聊消息
 
-PeerStorage负责私聊消息存储，对应源码文件为：`peer_storage.go`。
+PeerStorage负责单聊消息存储，对应源码文件为：`peer_storage.go`。
 
 ```go
 type PeerStorage struct {
@@ -19,7 +19,7 @@ type UserIndex struct {
 
 **UserID**：通过appid和uid两个参数可以唯一的定位一位用户。
 
-**UserIndex**：UserIndex维护了该用户上一条消息ID和上一条私聊消息ID两个索引位置。
+**UserIndex**：UserIndex维护了该用户上一条消息ID和上一条单聊消息ID两个索引位置。
 
 **PeerStorage**：PeerStorage在StorageFile的基础上维护了一个包含所有用户的索引信息。
 
@@ -38,11 +38,11 @@ func (storage *PeerStorage) GetNewCount(appid int64, uid int64, last_received_id
 
 **SetLastMessageID**
 
-设置私聊消息索引数据（最近消息ID）。
+设置单聊消息索引数据（最近消息ID）。
 
 **GetLastMessageID**
 
-获取私聊消息索引数据（最近消息ID）。
+获取单聊消息索引数据（最近消息ID）。
 
 **SavePeerMessage**
 
@@ -53,19 +53,19 @@ func (storage *PeerStorage) GetNewCount(appid int64, uid int64, last_received_id
 - 设备ID
 - 消息ID
 - 上一条消息ID
-- 上一条私聊消息ID
+- 上一条单聊消息ID
 
-其中，通过`上一条消息ID`和`上一条私聊消息ID`将消息分别连成了两个从后向前单向链表，这两个链表是有一定重合部分的。我们在获取历史消息列表时，就是通过这两个链表来读取消息列表数据的。
+其中，通过`上一条消息ID`和`上一条单聊消息ID`将消息分别连成了两个从后向前单向链表，这两个链表是有一定重合部分的。我们在获取历史消息列表时，就是通过这两个链表来读取消息列表数据的。
 
 > `消息ID`：这个ID是指消息本身的位置。<br>
-> `上一条私聊消息ID`：这个ID是指向的消息元数据的位置，而非消息本身的位置！
+> `上一条单聊消息ID`：这个ID是指向的消息元数据的位置，而非消息本身的位置！
 > `上一条消息ID`：这个ID也是指向的消息元数据的位置，而非消息本身的位置！
 
 **LoadHistoryMessages**
 
 从后往前获取**appid:receiver**用户的历史消息列表，直到**sync_msgid**指定的位置。
 
-**group_limit**获取的消息超过group_limit数量后，只获取私聊消息，0表示不限制。
+**group_limit**获取的消息超过group_limit数量后，只获取单聊消息，0表示不限制。
 
 **limit**限制了最多只取多少条历史消息，0表示不限制。
 
@@ -75,7 +75,7 @@ func (storage *PeerStorage) GetNewCount(appid int64, uid int64, last_received_id
 
 **LoadLatestMessages**
 
-从消息文件中读取用户最近的**limit**条消息，包括私聊消息和群组消息。
+从消息文件中读取用户最近的**limit**条消息，包括单聊消息和群组消息。
 
 **GetNewCount**
 
@@ -184,4 +184,4 @@ func (storage *PeerStorage) execMessage(msg *Message, msgid int64) {
 }
 ```
 
-每次从主服务器同步消息数据的时候（调用`SaveSyncMessage`）都会调用**execMessage**方法，来设私聊消息索引。
+每次从主服务器同步消息数据的时候（调用`SaveSyncMessage`）都会调用**execMessage**方法，来设单聊消息索引。

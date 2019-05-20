@@ -58,7 +58,7 @@ type HistoryRequest struct {
 
 ### SavePeerMessage
 
-存储私聊消息，返回此条消息对应的消息ID（这里是指消息本身位置，而非元数据位置）。
+存储单聊消息，返回此条消息对应的消息ID（这里是指消息本身位置，而非元数据位置）。
 
 ```go
 func SavePeerMessage(addr string, m *PeerMessage) (int64, error) {

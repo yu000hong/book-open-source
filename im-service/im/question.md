@@ -14,3 +14,8 @@ func (route *Route) GetUserIDs() IntSet {
 
 不过，看代码这个方法只在AppRoute.GetUsers()方法中被调用，但AppRoute.GetUsers()是一个未使用方法！
 
+### 为何HandleUnreadCount是直接设置Redis，而HandleSyncKey里是通过通道在另一个协程里面进行异步处理？
+
+HandleUnreadCount：peer_client.go L204
+
+HandleSyncKey：peer_client.go L133

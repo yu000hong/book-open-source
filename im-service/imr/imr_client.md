@@ -80,7 +80,7 @@ func (client *Client) HandleMessage(msg *Message) {
 
 **HandleSubscribeRoom/UnsubscribeRoom**：维护Route里面的room_ids映射
 
-**HandlePublish**：将私聊消息通过IMR消息路由器分发到对应的IM服务器
+**HandlePublish**：将单聊消息通过IMR消息路由器分发到对应的IM服务器
 
 ```go
 func (client *Client) HandlePublish(amsg *AppMessage) {
@@ -93,7 +93,7 @@ func (client *Client) HandlePublish(amsg *AppMessage) {
 			offline = false
 		}
 	}
-	//如果用户没有上线，那么将私聊写入消息推送队列
+	//如果用户没有上线，那么将单聊写入消息推送队列
 	if offline {
 		if cmd == MSG_IM {
 			client.PublishPeerMessage(amsg.appid, amsg.msg.body.(*IMMessage))

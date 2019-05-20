@@ -72,7 +72,7 @@ func (storage *GroupStorage) SaveGroupMessage(appid int64, gid int64, device_id 
 
 每条消息到IMS之后，都会存储两条Message，一条为消息本身，其后跟了一条元数据消息。
 
-- 私聊消息：元数据消息类型为`MSG_OFFLINE_V2`，保存了应用ID、接收用户UID、设备ID、消息ID、上一条消息ID、上一条私聊消息ID这些元数据
+- 单聊消息：元数据消息类型为`MSG_OFFLINE_V2`，保存了应用ID、接收用户UID、设备ID、消息ID、上一条消息ID、上一条单聊消息ID这些元数据
 - 群组消息：元数据消息类型为`MSG_GROUP_IM_LIST`，保存了应用ID、群组ID、设备ID、消息ID、上一条群组消息ID这些元数据
 
 ### EMessage
@@ -136,7 +136,7 @@ const MSG_OFFLINE_V2 = 250
 const MSG_OFFLINE = 254
 ```
 
-V2版本的消息多了一个`prev_peer_msgid`字段，多了一个私聊消息指针，可以只遍历所有私聊消息！
+V2版本的消息多了一个`prev_peer_msgid`字段，多了一个单聊消息指针，可以只遍历所有单聊消息！
 
 ### PeerMessage
 
@@ -150,7 +150,7 @@ type PeerMessage struct {
 }
 ```
 
-私聊消息，用于RPC调用SavePeerMessage，Raw字段为Message类型序列化后的字节数据。
+单聊消息，用于RPC调用SavePeerMessage，Raw字段为Message类型序列化后的字节数据。
 
 ```go
 func SavePeerMessage(addr string, m *PeerMessage) (int64, error) {

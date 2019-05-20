@@ -26,11 +26,11 @@
 
 `LoadLatestMessages`、`LoadHistoryMessages`、`LoadGroupHistoryMessages`这三个方法就提供了**limit**参数，防止大数据量的遍历。
 
-### IM服务器可以分别设置私聊消息IMS和群组消息IMS，如果分开存储的话，获取最新消息条数以及获取最近消息返回的结果准确么？
+### IM服务器可以分别设置单聊消息IMS和群组消息IMS，如果分开存储的话，获取最新消息条数以及获取最近消息返回的结果准确么？
 
 IM服务器有两个配置：`storage_rpc_pool` 和 `group_storage_rpc_pool`。
 
-注意，这里不是将私聊消息和群组消息分开存储，而是将超级群单独存储，放到`group_storage_rpc_pool`指定的IMS服务器上。
+注意，这里不是将单聊消息和群组消息分开存储，而是将超级群单独存储，放到`group_storage_rpc_pool`指定的IMS服务器上。
 
 ### 为什么超级群需要单独进行存储呢？
 
