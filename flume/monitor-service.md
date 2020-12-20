@@ -95,6 +95,8 @@ bin/flume-ng agent --conf-file example.conf --name a1 -Dflume.monitoring.type=ht
 
 `Event`代表一条消息事件，**Source组件**从外部数据源receive消息事件，**Source组件**接受(accept)之后消息事件被put到**Channel组件**，**Sink组件**从Channel中take出消息事件，然后drain到最终目的地。
 
+![](image/counter.png)
+
 ----
 
 | **Source指标** | Avro | Thrift | Exec | HTTP | JMS | Scribe | Taildir | SpoolDirectory | SyslogTcp | SyslogUDP |
