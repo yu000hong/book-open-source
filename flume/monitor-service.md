@@ -24,15 +24,21 @@ export JAVA_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.
 **Ganglia**
 
 ```bash
-bin/flume-ng agent --conf-file example.conf --name a1 -Dflume.monitoring.type=ganglia -Dflume.monitoring.hosts=com.example:1234,com.example2:5455 -Dflume.monitoring.pollFrequency=60 -Dflume.monitoring.isGanglia3=false
+bin/flume-ng agent --conf-file example.conf --name a1 \
+    -Dflume.monitoring.type=ganglia \
+    -Dflume.monitoring.hosts=com.example:1234,com.example2:5455 \
+    -Dflume.monitoring.pollFrequency=60 \
+    -Dflume.monitoring.isGanglia3=false
 ```
 
-通过`-Dflume.monitoring.type=ganglia`即启用Ganglia功能，Flume会定期将统计指标上报到Ganglia服务器。`pollFrequency`是可选参数，默认值60秒；`isGanglia3`是可选参数，默认值为false，即使用Ganglia 3.1格式。
+通过`-Dflume.monitoring.type=ganglia`即启用Ganglia功能，Flume会定期将统计指标上报到Ganglia服务器。`pollFrequency`是可选参数，默认值60秒；`isGanglia3`是可选参数，默认值为false，即使用`Ganglia 3.1`格式。
 
 **HTTP**
 
 ```bash
-bin/flume-ng agent --conf-file example.conf --name a1 -Dflume.monitoring.type=http -Dflume.monitoring.port=34545
+bin/flume-ng agent --conf-file example.conf --name a1 \
+    -Dflume.monitoring.type=http \
+    -Dflume.monitoring.port=34545
 ```
 
 通过`-Dflume.monitoring.type=http`即启用HTTP功能，Flume会启动一个Jetty Server，将统计指标以JSON格式暴露到 **http://\<hostname>:\<port>/metrics** 路径。
