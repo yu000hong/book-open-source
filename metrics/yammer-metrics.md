@@ -16,11 +16,11 @@
 - Meter
 - Timer
 
-**Counter**
+### Counter
 
 Yammer Metrics中的Counter可增可减，而Prometheus中的Counter只能增加，所以这个Counter很难适配到Prometheus中去，不过可以适配到Gauge，但其实语义其实不太适合。
 
-**Gauge**
+### Gauge
 
 Yammer Metrics中的Gauge<T>是泛型化的，它可以存储任意值，与Prometheus中的Gauge不太匹配。Prometheus中的Guage只处理数字类型，所以数字类型的Guage可以适配，其他类型就没办法处理了。
 
@@ -29,7 +29,7 @@ Yammer Metrics中的Gauge<T>是泛型化的，它可以存储任意值，与Prom
 - RatioGauge：返回比率值
 - PercentGauge：返回百分比
 
-**Histogram**
+### Histogram
 
 提供了如下几个数据：
 
@@ -43,7 +43,7 @@ Yammer Metrics中的Gauge<T>是泛型化的，它可以存储任意值，与Prom
 
 Yammer Metrics 中的 Histogram 可以直接映射为 Prometheus 中的 Summary 类型。
 
-**Meter**
+### Meter
 
 提供如下几个数据：
 
@@ -61,7 +61,7 @@ Yammer Metrics 中的 Meter 提供了5种数据，与 Prometheus 中的指标类
 - fifteenMinuteRate: Gauge
 - meanRate: Gauge
 
-**Timer**
+### Timer
 
 Yammer Metrics 中的 Timer 底层实际上是由一个 Meter 和一个 Histogram 组成，提供如下指标数据：
 
