@@ -1,0 +1,37 @@
+<mxfile host="65bd71144e" modified="2021-01-17T02:40:48.097Z" agent="5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.50.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="izq7DMUBZns-8UC_hbz7" version="13.10.0" type="embed">
+    <diagram id="pCN76JeKTN9yhabFUj8s" name="Page-1">
+        <mxGraphModel dx="1031" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="versionId" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="500" y="442" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="correlationId" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="590" y="442" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="clientId" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#ffffff;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="750" y="442" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="short" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#006666;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="420" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="int" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#006666;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="420" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="string" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#006666;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="420" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="groupId" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="910" y="442" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="string" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#006666;" parent="1" vertex="1">
+                    <mxGeometry x="955" y="420" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="ConsumerMetadataRequest" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="630" y="360" width="280" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
