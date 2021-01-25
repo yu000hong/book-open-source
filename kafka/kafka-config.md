@@ -9,10 +9,6 @@
 | `log.retention.ms` | int | 
 | `log.retention.minutes` | int |
 | `log.retention.hours` | int |
-| `log.roll.ms` | int | 
-| `log.roll.hours` | int | 
-| `log.roll.jitter.ms` | int | 
-| `log.roll.jitter.hours` | int |
 | `broker.id` | int | | the broker id for this server |
 | `message.max.bytes` | int | 1000000 | the maximum size of message that the server can receive |
 | `num.network.threads` | int | 3 | the number of network threads that the server uses for handling network requests |
@@ -25,4 +21,15 @@
 | `advertised.port` | int | same as `port` | the port to publish to ZooKeeper for clients to use. In IaaS environments, this may need to be different from the port to which the broker binds. If this is not set, it will publish the same port that the broker binds to. |
 | `socket.send.buffer.bytes` | int | 102400 | the SO_SNDBUFF buffer of the socket sever sockets |
 | `socket.receive.buffer.bytes` | int | 102400 | the SO_RCVBUFF buffer of the socket sever sockets |
-| `socket.request.max.bytes` | int | 100\*1024\*1024 |
+| `socket.request.max.bytes` | int | 100\*1024\*1024 | the maximum number of bytes in a socket request |
+| `max.connections.per.ip` | int | MAX_VALUE | the maximum number of connections we allow from each ip address |
+| `max.connections.per.ip.overrides` | map |  | per-ip or hostname overrides to the default maximum number of connections |
+| `connections.max.idle.ms` | int | 10\*60\*1000 | idle connections timeout: the server socket processor threads close the connections that idle more than this |
+| `num.partitions` | int | 1 | the default number of log partitions per topic |
+| `log.dirs` | string | "" | the directories in which the log data is kept |
+| `log.segment.bytes` | int | 1\*1024\*1024\*1024 | the maximum size of a single log file |
+| `log.roll.ms` | int | 
+| `log.roll.hours` | int | 
+| `log.roll.jitter.ms` | int | 
+| `log.roll.jitter.hours` | int |
+| `

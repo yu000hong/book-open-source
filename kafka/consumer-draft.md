@@ -1,0 +1,122 @@
+
+## ZookeeperConsumerConnector
+
+### consumerIdString
+
+consumerId: 我们可以通过配置`consumer.id`来定义，如果没有定义系统会随机生成一个。
+
+consumerIdString = groupId + "_" + consumerId 
+
+### ensureOffsetManagerConnected()
+
+如果offset存储方式选择的是"kafka"，那么会调用`ConsumerMetadataRequest`请求去任何一个Broker询问consume group对应的协调者Broker，并建立连接：BlockingChannel。
+
+### registerConsumerInZK()
+
+zkPath: `/consumers/$GROUP/ids/$CONSUMER_ID_STRING`
+
+zkData: 
+
+```
+{
+    "version": 1,
+    "subscription": {}, //topic count map
+    "pattern": "topic count patter string",
+    "timestamp": unix_timestamp_of_now,
+}
+```
+
+### commitOffsetToZooKeeper()
+
+zkPath: `/consumers/$GROUP/offsets/$TOPIC/$PARTITION_ID`
+
+zkData: `offset`
+
+### fetchOffsetFromZooKeeper()
+
+从`/consumers/$GROUP/offsets/$TOPIC/$PARTITION_ID`获取offset，如果没有对应的offset，那么返回**NoOffset**。
+
+### commitOffsets()
+
+发送`OffsetCommitRequest`请求到协调者Broker
+
+TODO
+
+### fetchOffsets()
+
+如果配置`offsets.storage`的是"zookeeper"，那么从ZK里面获取分区的offsets；如果配置的是"kafka"，那么从协调者Broker请求OffsetFetchRequest，返回分区的offsets。
+
+
+## TopicCount
+
+消费者在消费时，会指定消费的主题，以及主题对应生成几个Stream，这些数据就是由TopicCount来表示的。
+
+TopicCount的实现类有：
+- StaticTopicCount
+- WildcardTopicCount
+
+**StaticTopicCount**
+
+StaticTopicCount会指定具体的主题列表，以及每个主题对应生产多少Stream。
+
+**WildcardTopicCount**
+
+WildcardTopicCount通过正则匹配的方式来指定我们具体消费哪些主题，它会去Zookeeper路径`/brokers/topics`下遍历所有主题并进行正则匹配，返回我们需要的主题。
+
+
+
+## PartitionAssignor
+
+Assigns partitions to consumer instances in a group.
+
+**AssignmentContext**
+
+AssignmentContext是指定的某个Consumer对应的上下文环境，有四个字段：
+
+- myTopicThreadIds: consumer对应的主题和ConsumerThreadId列表的映射
+- partitionsForTopic: consumer对应的主题和分区ID列表的映射
+- consumersForTopic: 消费者组下主题对应的所有ConsumerThreadId列表的映射
+- consumers: 消费者组下的所有consumer
+
+这些数据都是从ZK上获取的，myTopicThreadIds是从`/consumers/$GROUP/ids/$CONSUMER_ID_STRING`节点的数据获取的，partitionsForTopic是从`/brokers/topics/$TOPIC`节点的data数据获取的，consumersForTopic是遍历`/consumers/$GROUP/ids`下所有子节点及其data数据获取的，consumers是遍历`/consumers/$GROUP/ids`下所有子节点获取的。
+
+
+## Zookeeper Structure
+
+### /consumers/$GROUP/ids/$CONSUMER_ID_STRING
+
+data:
+
+```json
+{
+    "version": 1,
+    "subscription": {}, //topic count map
+    "pattern": "topic count patter string",
+    "timestamp": unix_timestamp_of_now,
+}
+```
+
+### /brokers/ids/$BROKER_ID
+
+type: **Ephemeral**
+
+data:
+
+```json
+{
+    "version": 1,
+    "host": "broker ip",
+    "port": 9092,
+    "jmx_port": 8080,
+    "timestamp": unix_timestamp_of_now,
+}
+```
+
+### /brokers/topics/$TOPIC
+
+data:
+
+```json
+{
+    "partitions":
+}
