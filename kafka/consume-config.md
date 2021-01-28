@@ -11,7 +11,7 @@
 | `socket.timeout.ms` | int | 30000 | the socket timeout for network requests. Its value should be at least `fetch.wait.max.ms`. |
 | `socket.receive.buffer.bytes` | int | 64*1024 | the socket receive buffer for network requests |
 | `fetch.message.max.bytes` | int | 1024*1024 | the number of byes of messages to attempt to fetch |
-| `num.consumer.fetchers` | int | 1 | the number threads used to fetch data |
+| `num.consumer.fetchers` | int | 1 | the number threads used to fetch data for each broker |
 | `auto.commit.enable` | bool | true | if true, periodically commit to zookeeper the offset of messages already fetched by the consumer |
 | `auto.commit.interval.ms` | int | 60*1000 | the frequency in ms that the consumer offsets are committed to zookeeper |
 | `queued.max.message.chunks` | int | 2 | max number of message chunks buffered for consumption, each chunk can be up to `fetch.message.max.bytes`. |

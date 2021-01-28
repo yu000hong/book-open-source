@@ -120,3 +120,9 @@ data:
 {
     "partitions":
 }
+```
+
+### /consumers/$GROUP/owners/$TOPIC/$PARTITION
+
+
+
