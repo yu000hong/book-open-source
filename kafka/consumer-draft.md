@@ -46,6 +46,17 @@ TODO
 
 如果配置`offsets.storage`的是"zookeeper"，那么从ZK里面获取分区的offsets；如果配置的是"kafka"，那么从协调者Broker请求OffsetFetchRequest，返回分区的offsets。
 
+### reflectPartitionOwnershipDecision()
+
+将重平衡的分配结果写入ZooKeeper（ZK路径：/consumers/$GROUP/owners/$TOPIC/$PARTITION），只要有一个写入失败，那么会回滚删除所有写入结果。
+
+### deletePartitionOwnershipFromZK()
+
+从ZK上删除对应的临时节点（ZK路径：/consumers/$GROUP/owners/$TOPIC/$PARTITION）
+
+### releasePartitionOwnership()
+
+从ZK上删除当前consumer分配的所有分区（ZK路径：/consumers/$GROUP/owners/$TOPIC/$PARTITION）
 
 ## TopicCount
 
@@ -63,22 +74,11 @@ StaticTopicCount会指定具体的主题列表，以及每个主题对应生产�
 
 WildcardTopicCount通过正则匹配的方式来指定我们具体消费哪些主题，它会去Zookeeper路径`/brokers/topics`下遍历所有主题并进行正则匹配，返回我们需要的主题。
 
+## KafkaStream
+
+一个KafkaStream本质上就是一个Thread线程，不断的去Broker拉取数据。
 
 
-## PartitionAssignor
-
-Assigns partitions to consumer instances in a group.
-
-**AssignmentContext**
-
-AssignmentContext是指定的某个Consumer对应的上下文环境，有四个字段：
-
-- myTopicThreadIds: consumer对应的主题和ConsumerThreadId列表的映射
-- partitionsForTopic: consumer对应的主题和分区ID列表的映射
-- consumersForTopic: 消费者组下主题对应的所有ConsumerThreadId列表的映射
-- consumers: 消费者组下的所有consumer
-
-这些数据都是从ZK上获取的，myTopicThreadIds是从`/consumers/$GROUP/ids/$CONSUMER_ID_STRING`节点的数据获取的，partitionsForTopic是从`/brokers/topics/$TOPIC`节点的data数据获取的，consumersForTopic是遍历`/consumers/$GROUP/ids`下所有子节点及其data数据获取的，consumers是遍历`/consumers/$GROUP/ids`下所有子节点获取的。
 
 
 ## Zookeeper Structure
@@ -118,5 +118,16 @@ data:
 
 ```json
 {
-    "partitions":
+    "partitions": { "$PARTITION_ID": [$BROKER_IDS] }
 }
+```
+
+### /consumers/$GROUP/owners/$TOPIC/$PARTITION
+
+type: 临时节点
+
+data: ConsumerThreadId
+
+表明分区分配给了某个消费者。
+
+
