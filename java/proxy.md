@@ -206,13 +206,13 @@ public final class $Proxy0 extends Proxy implements Action {
 
 **总结**
 
-从代码可以看出，代理类继承自`java.reflect.Proxy`，除了实现接口Action里的方法之外，还实现了`Object`基础类的三个方法 **hashCode()**/**equals()**/**toString()**，这些方法都是直接调用的我们提供的InvokeHandler里的`invoke()`方法。
+从代码可以看出，代理类继承自`java.reflect.Proxy`，除了实现接口Action里的方法之外，还实现了`Object`基础类的三个方法 **hashCode()**/**equals()**/**toString()**，这些方法都是直接调用的我们提供的InvocationHandler里的`invoke()`方法。
 
-因此，我们提供的InvokeHandler除了需要实现接口对应的方法外，还需要实现 **hashCode()**/**equals()**/**toString()** 这三个方法。
+因此，我们提供的InvocationHandler除了需要实现接口对应的方法外，还需要实现 **hashCode()**/**equals()**/**toString()** 这三个方法。
 
 - 代理类继承自`java.reflect.Proxy`基类，因为Java不支持多重继承，所以Java动态代理只支持代理接口，而不能代理类；
-- InvokeHandler除了需要实现接口对应的方法外，还需要实现 **hashCode()**/**equals()**/**toString()** 这三个方法；
-- `InvokeHandler.invoke()`方法虽然提供了proxy实例，但是不要调用proxy对象上的任何方法，避免循环调用导致死循环；
+- InvocationHandler除了需要实现接口对应的方法外，还需要实现 **hashCode()**/**equals()**/**toString()** 这三个方法；
+- `InvocationHandler.invoke()`方法虽然提供了proxy实例，但是不要调用proxy对象上的任何方法，避免循环调用导致死循环；
 
 ### MyBatis如何使用动态代理
 
