@@ -46,7 +46,7 @@ public interface ConfigurationCustomizer {
 
 ### MybatisProperties
 
-这各类定义了我们在`application.yml`文件中如何设置MyBatis的各种属性，支持的属性有：
+这个类定义了我们在`application.yml`文件中如何设置MyBatis的各种属性，支持的属性有：
 
 - configLocation
 - checkConfigLocation
