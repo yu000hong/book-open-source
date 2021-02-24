@@ -32,10 +32,11 @@ MyBatis支持动态SQL特性，你可以在settings里配置`defaultScriptingLan
 
 这是MyBatis默认的脚本引擎，它支持在SQL里面添加如下标签：
 
-- if
 - where/set/trim
-- choose/when/
+- choose/when/otherwise
+- if
 - foreach
+- bind
 
 例如：
 
