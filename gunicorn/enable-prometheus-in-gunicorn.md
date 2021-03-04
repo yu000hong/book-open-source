@@ -42,14 +42,13 @@ $ FLASK_APP=api FLASK_ENV=local prometheus_multiproc_dir=metric /usr/local/bin/g
 
 ```python
 from flask import Blueprint, Response
-from prometheus_client import multiprocess, generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
+from prometheus_client import multiprocess, generate_latest, REGISTRY, CONTENT_TYPE_LATEST
 
 metric_bp = Blueprint('metric', __name__, url_prefix='/metric')
 @metric_bp.route('', methods=['GET', 'POST'])
 def metric():
-    registry = CollectorRegistry()
-    multiprocess.MultiProcessCollector(registry)
-    data = generate_latest(registry)
+    multiprocess.MultiProcessCollector(REGISTRY)
+    data = generate_latest(REGISTRY)
     return Response(data, mimetype=CONTENT_TYPE_LATEST)
 ```
 
