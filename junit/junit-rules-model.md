@@ -75,8 +75,8 @@ public class MyBeforeRule {
 }
 public class MyAfterRule {
     public Statement apply(Statement base, Description description){
-        init();
         base.evaluate();
+        clean();
     }
 }
 public class MyAroundRule {
