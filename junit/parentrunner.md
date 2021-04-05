@@ -192,7 +192,7 @@ protected void runChild(Runner runner, final RunNotifier notifier) {
 - 测试类必须具有至少一个测试方法（由`@Test`注解）
 - 所有测试方法必须是非静态公共无参方法，同时返回void类型
 - `@Rule`注解的字段必须是非静态的公共字段，同时类型必须是`TestRule`或者`MethodRule`
-- `@Rule`注解的方法必须是非静态的公共方法，同时返回`MethodRule`或者`MethodRule`类型
+- `@Rule`注解的方法必须是非静态的公共方法，同时返回`TestRule`或者`MethodRule`类型
 
 核心方法：
 
