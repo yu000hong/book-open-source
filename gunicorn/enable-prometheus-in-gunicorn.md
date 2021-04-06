@@ -28,7 +28,7 @@ pip install prometheus-client
 
 ### 配置环境变量
 
-必须配置`prometheus_multiproc_dir`环境变量，才能开启多进程模式。而且，这个环境变量必须在启动脚本里面设置才能多所有子进程生效，不能在程序里面使用Python去设置。
+必须配置`prometheus_multiproc_dir`环境变量，才能开启多进程模式。而且，这个环境变量必须在启动脚本里面设置才能在所有子进程生效，不能在程序里面使用Python去设置。
 
 同时，这个目录必须存在，否则启动会报错！
 
