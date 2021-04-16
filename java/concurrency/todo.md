@@ -9,3 +9,7 @@ The Java Concurrency Stress (jcstress) is the experimental harness and a suite o
 
 [JMH](https://github.com/openjdk/jmh)
 
+
+### ThreadGroup作用？
+
+### Thread stop()/pause()方法为啥废弃了？
