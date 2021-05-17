@@ -370,7 +370,7 @@ public interface UriTemplateHandler {
 
 关于URI的处理，最终都是委托给`UriComponentsBuilder`来完成。
 
-我们在RestTemplate提供url的时候，可以使用`{name:[a-z]{1,5}}`（冒号后面时正则校验规则，可选值）的这种模板变量的方式，然后再提供变量键值对获得最终的URL。
+我们在RestTemplate提供url的时候，可以使用`{name:[a-z]{1,5}}`（冒号后面是正则校验规则，可选值）的这种模板变量的方式，然后再提供变量键值对获得最终的URL。
 
 我们先来看看其中的几个方法：
 
