@@ -59,7 +59,7 @@ private[kafka] trait TopicCount {
         "view": 18,
     }, 
     "pattern": "static",
-    "timestamp": unix_timestamp_of_now,
+    "timestamp": 1622459705000,
 }
 ```
 
@@ -70,7 +70,7 @@ private[kafka] trait TopicCount {
         "user_*": 10,
     }, 
     "pattern": "white_list|black_list",
-    "timestamp": unix_timestamp_of_now,
+    "timestamp": 1622459705000,
 }
 ```
 
