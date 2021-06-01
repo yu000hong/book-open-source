@@ -31,6 +31,7 @@ RestTemplate
 - 请求拦截器列表：空
 - 请求初始化器列表：空
 - 请求对象工厂类：`SimpleClientHttpRequestFactory`
+- URI模版处理器：`DefaultUriBuilderFactory`
 - 响应提取器：`ResponseEntityResponseExtractor`或`HttpMessageConverterExtractor`
 
 注意：我们可以为每个请求单独停供**响应提取器**和**请求回调**这两个参数！
@@ -294,7 +295,7 @@ public T extractData(ClientHttpResponse response) throws IOException {
 - 如果没有响应体数据，那么直接返回null
 - 遍历所有的消息转换器，直到遇到能够转换响应体数据的消息转换器
     - 如果转换器支持范型类型的解析(实现了GenericHttpMessageConverter接口)，那么使用范型转换器相应的处理逻辑
-    - 如果转换器时普通转换器，那么直接使用HttpMessageConverter接口对应的处理逻辑
+    - 如果转换器是普通转换器，那么直接使用HttpMessageConverter接口对应的处理逻辑
 - 如果读取响应体数据时发生异常，那么直接抛出RestClientException异常
 - 如果无法解析响应体数据，那么抛出RestClientException异常
 
@@ -369,7 +370,7 @@ public interface UriTemplateHandler {
 
 关于URI的处理，最终都是委托给`UriComponentsBuilder`来完成。
 
-我们在RestTemplate提供url的时候，可以使用`{name:[a-z]{1,5}}`（冒号后面时正则校验规则，可选值）的这种模板变量的方式，然后再提供变量键值对获得最终的URL。
+我们在RestTemplate提供url的时候，可以使用`{name:[a-z]{1,5}}`（冒号后面是正则校验规则，可选值）的这种模板变量的方式，然后再提供变量键值对获得最终的URL。
 
 我们先来看看其中的几个方法：
 
@@ -471,6 +472,15 @@ public ClientHttpResponse execute(HttpRequest request, byte[] body) throws IOExc
 
 可以看到，拦截器的拦截逻辑的执行是先于请求执行逻辑的。
 
+如果设置了四个拦截器`<i1,i2,i3,i4>`，那么执行过程如下：
+
+```
+(i1->                                 ->i1)
+    (i2->                         ->i2)
+        (i3->                 ->i3)
+            (i4->         ->i4)
+                 execute()
+```
 
 
 ### 参考资源
