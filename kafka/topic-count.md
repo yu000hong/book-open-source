@@ -35,7 +35,7 @@ private[kafka] trait TopicCount {
 
 ### constructTopicCount()
 
-方法**constructTopicCount()**的作用是从Zookeeper读取消费者的消费分区配置，用于后面的分区分配计算。
+方法 **constructTopicCount()** 的作用是从Zookeeper读取消费者的消费分区配置，用于后面的分区分配计算。
 
 每个消费者的`TopicCount`数据都会写入到ZK的`/consumers/$GROUP/ids/$CONSUMER_ID_STRING`路径下，具体写入内容为：
 
