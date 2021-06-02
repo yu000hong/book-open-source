@@ -25,5 +25,3 @@ class ZKTopicPartitionChangeListener(val loadBalancerListener: ZKRebalancerListe
     }
 }
 ```
-
-
