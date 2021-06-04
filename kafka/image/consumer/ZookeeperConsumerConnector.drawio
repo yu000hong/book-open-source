@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="V75hB-kW6oTVuLSoQBS7" name="Page-1">
-        <mxGraphModel dx="2431" dy="2045" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2021" dy="1705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -347,10 +347,10 @@
                 <mxCell id="115" value="&lt;p style=&quot;line-height: 120% ; font-size: 21px&quot;&gt;&lt;/p&gt;&lt;h1 style=&quot;font-size: 21px&quot;&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;再平衡包括两方面工作：&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;1、清除队列并重设topicRegistry&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;2、重启所有ConsumerFetcherThread&lt;/span&gt;&lt;/div&gt;&lt;p style=&quot;font-size: 21px&quot;&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=21;fontStyle=0" vertex="1" parent="1">
                     <mxGeometry x="-570" y="770" width="490" height="230" as="geometry"/>
                 </mxCell>
-                <mxCell id="126" value="" style="group;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" connectable="0" parent="1">
+                <mxCell id="126" value="" style="group;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" connectable="0" parent="1">
                     <mxGeometry x="1070" y="510" width="287.5" height="410" as="geometry"/>
                 </mxCell>
-                <mxCell id="117" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=0;fontSize=21;align=center;" vertex="1" parent="126">
+                <mxCell id="117" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=0;fontSize=21;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="126">
                     <mxGeometry width="287.5" height="410" as="geometry"/>
                 </mxCell>
                 <mxCell id="118" value="fetchedOffset" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=0;fontSize=21;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="126">
