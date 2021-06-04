@@ -37,7 +37,7 @@ private[kafka] trait TopicCount {
 
 方法 **constructTopicCount()** 的作用是从Zookeeper读取消费者的消费分区配置，用于后面的分区分配计算。
 
-每个消费者的`TopicCount`数据都会写入到ZK的`/consumers/$GROUP/ids/$CONSUMER_ID_STRING`路径下，具体写入内容为：
+每个消费者的`TopicCount`数据都会写入到ZK的 **/consumers/$GROUP/ids/$CONSUMER_ID_STRING** 路径下，具体写入内容为：
 
 ```
 {
@@ -79,7 +79,4 @@ private[kafka] trait TopicCount {
 这里`相同的计算`很重要，如果大家计算方式不一样，会导致形成的决议不一致，导致消费出现问题。比如某个主题有10个分区，3个消费者，其中AB两个消费者计算结果是：A消费分区1-4，B消费分区5-7，C消费分区8-10。但是C消费者由于配置不一致，计算结果是：A消费分区1、4、7、10，B消费分区2、5、8，C消费分区3、6、9。
 
 最后的消费结果就是：A消费分区1-4，B消费分区5-7，C消费分区3、6、9。分区3和6重复消费了，但是分区8和10却没有被消费。出现这种情况的原因就是AB消费者配置了`RangeAssignor`，而C配置了`RoundRobinAssignor`两种不一致的分区分配计算方式！
-
-
-
 
