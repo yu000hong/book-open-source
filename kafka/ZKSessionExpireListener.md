@@ -6,7 +6,7 @@
 
 2) 在会话超时之内没有连接上：这就是 **session expire** 的情况，这时候Zookeeper集群会认为会话已经结束，并清除和这个会话有关的所有数据，包括临时节点和注册的监视点Watcher。在会话超时之后，如果客户端重新连接上了Zookeeper集群，这个时候就会抛出 **session expired** 异常，此前会话的所有数据都没有了，需要我们手动重建。
 
-从上面的描述，我们知道`ZKSessionExpireListener`就是为了重建由于会话失效导致的清掉的数据。我们看看代码：
+从上面的描述，我们知道`ZKSessionExpireListener`就是为了重建由于会话失效导致被清掉的数据。我们看看代码：
 
 ```scala
 class ZKSessionExpireListener(val dirs: ZKGroupDirs,
