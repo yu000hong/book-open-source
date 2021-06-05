@@ -76,10 +76,7 @@ WildcardTopicCount通过正则匹配的方式来指定我们具体消费哪些�
 
 ## KafkaStream
 
-一个KafkaStream本质上就是一个Thread线程，不断的去Broker拉取数据。
-
-
-
+一个KafkaStream本质上就是一个逻辑消费线程，不断的从内部BlockingQueue消费数据。而物理拉取线程会从Broker拉取数据填充到这个BlockingQueue里面。
 
 ## Zookeeper Structure
 
