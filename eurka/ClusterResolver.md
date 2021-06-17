@@ -1,5 +1,7 @@
 # ClusterResolver
 
+集群解析器，返回Eureka集群某个Region内所有Zone的所有服务器结点。
+
 ```java
 public interface ClusterResolver<T extends EurekaEndpoint> {
 
@@ -10,6 +12,7 @@ public interface ClusterResolver<T extends EurekaEndpoint> {
 }
 ```
 
+继承关系：
 
 ```java
 ClusterResolver
@@ -79,7 +82,7 @@ public List<AwsEndpoint> getClusterEndpoints() {
 
 ### StaticClusterResolver
 
-静态配置Eureka集群所有机器：
+静态配置Eureka集群所有机器，直接硬编码的方式设置：
 
 ```java
 public class StaticClusterResolver<T extends EurekaEndpoint> implements ClusterResolver<T> {
@@ -182,8 +185,9 @@ TODO
 
 TODO
 
+### AsyncResolver
 
+> An async resolver that keeps a cached version of the endpoint list value for gets, and updates this cache periodically in a different thread.
 
-
-
+异步集群解析器，它会缓存之前的解析结果，并且定期 **eurekaServiceUrlPollIntervalSeconds** 调用委托解析器去更新缓存。
 
