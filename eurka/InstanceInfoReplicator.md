@@ -35,3 +35,28 @@ public void run() {
 ```
 
 代码`discoveryClient.refreshInstanceInfo()`将会调用`HealthCheckHandler`进行实例的健康检查！
+
+### StatusChangeEvent
+
+如果我们配置 **shouldOnDemandUpdateStatusChange** 为 **true**，那么当发现Eureka实例状态发生变化的时候，会调用`instanceInfoReplicator.onDemandUpdate()`方法进行重新注册！
+
+看看代码：
+
+```java
+statusChangeListener = new ApplicationInfoManager.StatusChangeListener() {
+    @Override
+    public String getId() {
+        return "statusChangeListener";
+    }
+
+    @Override
+    public void notify(StatusChangeEvent statusChangeEvent) {
+        instanceInfoReplicator.onDemandUpdate();
+    }
+};
+
+if (clientConfig.shouldOnDemandUpdateStatusChange()) {
+    applicationInfoManager.registerStatusChangeListener(statusChangeListener);
+}
+```
+
